@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
+import { Navbar } from "./components/navbar";
+import { RudimentsListPage } from "./pages/rudiments-list/rudiments-list-page";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const RudimentTrackerPage = () => (
+  <div>
+    <div>
+    scoresheet
+    <button>play</button>
     </div>
-  );
+    <div>
+      Track your progress:
+      <div>
+        - 80bpm
+        - 80bpm
+        - 80bpm
+        - 80bpm
+      </div>
+    </div>
+    <div>
+      metronome
+    </div>
+  </div>
+)
+
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<RudimentsListPage />} />
+          <Route path="/rudiment-tracker/:id" element={<RudimentTrackerPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App;
