@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Metronome } from "../../components"
 import { NotationScreen } from "./components/notation-screen"
 import { TrackerCheckbox } from "./components/tracker-checkbox"
 
@@ -17,18 +18,19 @@ export const RudimentTrackerPage = () => {
     Object.entries(checkboxes).map(([bpm, checked]) => [Number(bpm), checked])
 
   return (
-    <div className="p-4 flex flex-col space-y-4">
+    <div className="flex flex-col">
+      <div className="pt-2 text-center font-bold text-indigo-600">
+        Single Stroke
+      </div>
       <NotationScreen />
-      <div className="flex flex-col">
+      <div className="p-4 pt-0 flex flex-col space-y-4">
+        <Metronome />
         <span className="text-md font-bold mb-4">Track your progress:</span>
         <div className="space-y-2">
           {checkboxArray.map(([bpm, checked]) => (
             <TrackerCheckbox key={bpm} checked={checked} onCheck={onCheck(bpm)} bpm={bpm} />
           ))}
         </div>
-      </div>
-      <div>
-        metronome
       </div>
     </div>
   )
