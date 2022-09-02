@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { NotationScreen } from "./components/notation-screen"
 import { TrackerCheckbox } from "./components/tracker-checkbox"
 
 const progressOptions = Array.from({ length: 10 }).map((_, i) => ({ bpm: i * 10 + 60 }))
@@ -17,10 +18,7 @@ export const RudimentTrackerPage = () => {
 
   return (
     <div className="p-4 flex flex-col space-y-4">
-      <div>
-        scoresheet
-        <button>play</button>
-      </div>
+      <NotationScreen />
       <div className="flex flex-col">
         <span className="text-md font-bold mb-4">Track your progress:</span>
         <div className="space-y-2">
