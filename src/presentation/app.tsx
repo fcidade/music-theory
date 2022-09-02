@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Navbar } from "./components/navbar";
-import { RudimentTrackerPage ,RudimentsListPage} from "./pages"
+import { Navbar } from "./components";
+import { RudimentTrackerPage, RudimentsListPage } from "./pages"
 
 const App = () => {
   return (
