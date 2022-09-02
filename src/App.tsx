@@ -1,27 +1,6 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Navbar } from "./components/navbar";
-import { RudimentsListPage } from "./pages/rudiments-list/rudiments-list-page";
-
-const RudimentTrackerPage = () => (
-  <div>
-    <div>
-    scoresheet
-    <button>play</button>
-    </div>
-    <div>
-      Track your progress:
-      <div>
-        - 80bpm
-        - 80bpm
-        - 80bpm
-        - 80bpm
-      </div>
-    </div>
-    <div>
-      metronome
-    </div>
-  </div>
-)
+import { RudimentTrackerPage ,RudimentsListPage} from "./pages"
 
 const App = () => {
   return (
