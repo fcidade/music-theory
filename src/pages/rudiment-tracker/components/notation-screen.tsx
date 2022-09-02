@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Vex, { Annotation } from "vexflow";
 /**
  * https://github.com/0xfe/vexflow/wiki/Tutorial
@@ -7,12 +7,12 @@ import Vex, { Annotation } from "vexflow";
 export type Props = {
 }
 
-const dotted = (note: Vex.StaveNote) => {
-    Vex.Dot.buildAndAttach([note]);
-    return note;
-}
+// const dotted = (note: Vex.StaveNote) => {
+//     Vex.Dot.buildAndAttach([note]);
+//     return note;
+// }
 
-export const NotationScreen = ({ }: Props) => {
+export const NotationScreen = (props: Props) => {
     const staffId = 'staff-container';
     useEffect(() => {
         const { Renderer, Stave, StaveNote, Beam, Formatter } = Vex.Flow;
