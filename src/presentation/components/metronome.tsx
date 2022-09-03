@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+import * as Tone from "tone"
 import { Button } from "."
 import { useMetronome } from "../../usecases"
 
@@ -17,6 +19,17 @@ export const Metronome = () => {
         increaseBpm,
         decreaseBpm,
     } = useMetronome()
+
+    useEffect(() => {
+        const synth = new Tone.Synth().toDestination();
+        if (beat === 0) {
+            synth.volume.value = -3
+            synth.triggerAttackRelease("C5", "8n");
+        } else {
+            synth.volume.value = -4
+            synth.triggerAttackRelease("D5", "8n");
+        }
+    }, [beat])
 
     return (
         <div className="flex flex-col justify-center items-center space-y-8 py-8">

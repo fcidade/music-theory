@@ -1,8 +1,7 @@
 import { useStorage } from "."
 
 export const useTracker = (trackerId: string, options: string[]) => {
-    const optionsMap =
-        options.reduce((map, key) => ({ ...map, [key]: false }), {})
+    const optionsMap = options.reduce((map, key) => ({ ...map, [key]: false }), {})
     const [checkedOptions, setCheckedOptions] = useStorage<Record<string, boolean>>(trackerId, optionsMap)
 
     const toggleCheck = (key: string) => {
