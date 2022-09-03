@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Vex, { Annotation, StaveNote } from "vexflow";
+import Vex, { StaveNote } from "vexflow";
 /**
  * https://github.com/0xfe/vexflow/wiki/Tutorial
  */
