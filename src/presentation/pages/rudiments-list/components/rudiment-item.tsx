@@ -19,8 +19,10 @@ export const RudimentItem = ({ name, handOrder, bpmRecord, }: Props) => (
     </div>
     <aside className="text-purple-600 flex flex-col items-end justify-between">
       <div className='flex content-center text-right items-center space-x-1'>
-        <SparklesIcon className="w-4 h-4" />
-        <div>{bpmRecord} bpm</div>
+        {bpmRecord > 0 && (<>
+          <SparklesIcon className="w-4 h-4" />
+          <div>{bpmRecord} bpm</div>
+        </>)}
       </div>
       <div>
         <SpeakerWaveIcon className="w-6 h-6" />

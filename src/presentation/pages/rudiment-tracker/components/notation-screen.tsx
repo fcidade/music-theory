@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import Vex, { Annotation } from "vexflow";
+import Vex, { Annotation, StaveNote } from "vexflow";
 /**
  * https://github.com/0xfe/vexflow/wiki/Tutorial
  */
 
 export type Props = {
+    notes: StaveNote[]
 }
 
 // const dotted = (note: Vex.StaveNote) => {
@@ -12,7 +13,7 @@ export type Props = {
 //     return note;
 // }
 
-export const NotationScreen = (props: Props) => {
+export const NotationScreen = ({ notes }: Props) => {
     const staffId = 'staff-container';
     useEffect(() => {
         const { Renderer, Stave, StaveNote, Beam, Formatter } = Vex.Flow;
@@ -34,25 +35,6 @@ export const NotationScreen = (props: Props) => {
         // Connect it to the rendering context and draw!
         stave.setContext(context).draw();
 
-        const notes = [
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("R")),
-            new StaveNote({ keys: ["C/5"], duration: "16" }).addModifier(new Annotation("L")),
-        ];
-
         const beams = Beam.generateBeams(notes);
         Formatter.FormatAndDraw(context, stave, notes);
         beams.forEach((b) => {
@@ -63,6 +45,7 @@ export const NotationScreen = (props: Props) => {
 
         return () => {
             const staff = document.getElementById(staffId) as HTMLDivElement
+            if (!staff) return
             staff.innerHTML = ""
         }
     }, [])
