@@ -11,7 +11,7 @@ export const RudimentTrackerPage = () => {
   const { id } = useParams()
   const { name, staveNotes } = rudiments.find(r => r.id === id)!
 
-  const { items } = useTracker('rudiment-tracker', progressOptions)
+  const { items } = useTracker(`rudiment-tracker-${id}`, progressOptions)
   return (
     <div className="flex flex-col">
       <div className="pt-2 text-center font-bold text-indigo-600">
