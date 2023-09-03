@@ -20,6 +20,9 @@
 	let direction: 'up' | 'down' = 'up';
 	let accidentDisplay: AccidentDisplay = 'both';
 
+	let timesGuessedRight = 0;
+	let timesGuessedWrong = 0;
+
 	$: directionAsNumber = direction === 'up' ? 1 : -1;
 	$: correctNote = getWrapped(
 		notes,
@@ -31,8 +34,10 @@
 	const check = (guess: string) => {
 		if (guess === correctNote) {
 			state = 'right_answer';
+			timesGuessedRight++;
 		} else {
 			state = 'wrong_answer';
+			timesGuessedWrong++;
 		}
 	};
 
@@ -99,6 +104,10 @@
 					<Button on:click={nextQuestion}>Próximo</Button>
 				{/if}
 			</div>
+		</div>
+		<div class="flex justify-between">
+			<div class="text-1xl font-bold text-emerald-500">Acertos: {timesGuessedRight}</div>
+			<div class="text-1xl font-bold text-rose-500 text-right">Erros: {timesGuessedWrong}</div>
 		</div>
 
 		{#if debug}

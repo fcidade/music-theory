@@ -12,7 +12,6 @@ export const intervalDictionary: Record<number, string> = {
   9: "Sexta",
   10: "Sétima menor",
   11: "Sétima maior",
-  12: "Oitava",
 };
 
 export type Note =
